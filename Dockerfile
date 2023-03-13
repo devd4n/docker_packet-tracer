@@ -17,8 +17,7 @@ RUN mkdir -p pt_package/DEBIAN \
   && dpkg-deb -x /home/pt/packettracer.deb /home/pt/pt_package/ \
   && dpkg-deb -e /home/pt/packettracer.deb /home/pt/pt_package/DEBIAN/ \
   && rm -f /home/pt/pt_package/DEBIAN/preinst \
-  && dpkg-deb -Z xz -b /home/pt/pt_package/ . \
-  && mv /home/pt/pt_package/packettracer_* /home/pt/packettracer.deb \
+  && dpkg-deb -Z xz -b /home/pt/pt_package/ /home/pt/packettracer.deb \
   && apt install /home/pt/packettracer.deb -y \
   && rm -f /home/pt/*.deb \
   && rm -rf /home/pt/pt_package \
