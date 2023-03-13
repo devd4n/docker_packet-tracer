@@ -13,7 +13,8 @@ RUN export uid=1001 gid=1001 \
   
 COPY --chown=1001 PacketTracer.deb /home/pt/packettracer.deb
 
-RUN mkdir -p pt_package/DEBIAN \
+RUN export uid=1001 gid=1001 \
+  && mkdir -p pt_package/DEBIAN \
   && dpkg-deb -x /home/pt/packettracer.deb /home/pt/pt_package/ \
   && dpkg-deb -e /home/pt/packettracer.deb /home/pt/pt_package/DEBIAN/ \
   && rm -f /home/pt/pt_package/DEBIAN/preinst \
