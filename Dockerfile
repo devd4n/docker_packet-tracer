@@ -9,8 +9,7 @@ RUN export uid=1000 gid=1000 \
   && echo "pt:x:${uid}:${gid}:pt,,,:/home/pt:/bin/bash" >> /etc/passwd \
   && echo "pt:x:${uid}:" >> /etc/group \
   && mkdir /home/pt/storage \
-  && chown ${uid}:${gid} -Rv /home/pt \
-  && wget "https://archive.org/download/packettracer730mac_202002/PacketTracer_730_amd64.deb" \
+  && chown ${uid}:${gid} -Rv /home/pt
   
 COPY PacketTracer* /tmp/PacketTracer.deb
 
