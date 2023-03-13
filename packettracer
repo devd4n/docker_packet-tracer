@@ -4,4 +4,4 @@ echo Starting Packet Tracer 7.3.0
 
 export LD_LIBRARY_PATH=/opt/pt/bin
 cd /opt/pt/bin
-./PacketTracer7 "$@"
+./PacketTracer "$@"
