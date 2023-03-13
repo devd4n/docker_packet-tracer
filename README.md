@@ -9,7 +9,7 @@ Prerequisite is an XServer, which is provided to the container as a volume. Furt
 **1. Get the repository**
 #### https
 ```https
-git clone https://github.com/devd4n/docker-packet-tracer.git
+git clone https://github.com/devd4n/docker_packet-tracer.git
 ```
 
 **2. Navigate to the repo**
