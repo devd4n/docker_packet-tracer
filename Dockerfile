@@ -4,7 +4,7 @@ MAINTAINER devd4n
 
 RUN apt-get update && apt-get install -y tar wget xauth libqt5webkit5 libqt5xml5 libqt5multimedia5 libqt5script5 libqt5scripttools5 sudo libnss3 libxss1 libasound2 vim less
 
-RUN export uid=1000 gid=1000 \
+RUN export uid=1001 gid=1001 \
   && mkdir -p /home/pt \
   && echo "pt:x:${uid}:${gid}:pt,,,:/home/pt:/bin/bash" >> /etc/passwd \
   && echo "pt:x:${uid}:" >> /etc/group \
