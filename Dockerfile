@@ -11,11 +11,11 @@ RUN export uid=1000 gid=1000 \
   && mkdir /home/pt/storage \
   && chown ${uid}:${gid} -Rv /home/pt
   
-COPY PacketTracer.deb /home/pt/PacketTracer.deb
+COPY PacketTracer.deb /home/pt/packettracer.deb
 
 RUN mkdir -p pt_package/DEBIAN \
-  && dpkg-deb -x /home/pt/PacketTracer.deb /pt_package/ \
-  && dpkg-deb -e /home/pt/PacketTracer.deb /pt_package/DEBIAN/ \
+  && dpkg-deb -x /home/pt/packettracer.deb /pt_package/ \
+  && dpkg-deb -e /home/pt/packettracer.deb /pt_package/DEBIAN/ \
   && rm -f pt_package/DEBIAN/preinst \
   && dpkg-deb -Z xz -b pt_package/ . \
   && mv packettracer_* packettracer.deb \
