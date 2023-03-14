@@ -7,10 +7,10 @@ MAINTAINER devd4n
 RUN apt-get update && apt-get install -y tar wget xauth libqt5webkit5 libqt5xml5 libqt5multimedia5 libqt5script5 libqt5scripttools5 sudo libnss3 libxss1 libasound2 vim less
 
 RUN mkdir -p /home/pt \
-  && echo "pt:x:${id -u}:${id -g}:pt,,,:/home/pt:/bin/bash" >> /etc/passwd \
-  && echo "pt:x:${id -u}:" >> /etc/group \
+  && echo "pt:x:$UID:$UID:pt,,,:/home/pt:/bin/bash" >> /etc/passwd \
+  && echo "pt:x:$UID:" >> /etc/group \
   && mkdir /home/pt/storage \
-  && chown ${id -u}:${id -u} -Rv /home/pt
+  && chown $UID:$UID -Rv /home/pt
   
 COPY packettracer.deb /home/pt/packettracer.deb
 
@@ -22,7 +22,7 @@ RUN mkdir -p pt_package/DEBIAN \
   && apt install /home/pt/packettracer.deb -y \
   && rm -f /home/pt/*.deb \
   && rm -rf /home/pt/pt_package \
-  && chown ${uid}:${gid} -Rv /opt/pt
+  && chown $UID:$GID -Rv /opt/pt
 
 COPY packettracer /usr/local/bin/packettracer
 RUN chmod +x /usr/local/bin/packettracer
