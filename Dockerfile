@@ -8,7 +8,7 @@ RUN mkdir -p /home/pt \
   && echo "pt:x:${id -u}:${id -g}:pt,,,:/home/pt:/bin/bash" >> /etc/passwd \
   && echo "pt:x:${id -u}:" >> /etc/group \
   && mkdir /home/pt/storage \
-  && chown ${uid}:${gid} -Rv /home/pt
+  && chown ${id -u}:${id -u} -Rv /home/pt
   
 COPY packettracer.deb /home/pt/packettracer.deb
 
