@@ -4,17 +4,15 @@ MAINTAINER devd4n
 
 RUN apt-get update && apt-get install -y tar wget xauth libqt5webkit5 libqt5xml5 libqt5multimedia5 libqt5script5 libqt5scripttools5 sudo libnss3 libxss1 libasound2 vim less
 
-RUN export uid=1001 gid=1001 \
-  && mkdir -p /home/pt \
-  && echo "pt:x:${uid}:${gid}:pt,,,:/home/pt:/bin/bash" >> /etc/passwd \
-  && echo "pt:x:${uid}:" >> /etc/group \
+RUN mkdir -p /home/pt \
+  && echo "pt:x:${id -u}:${id -g}:pt,,,:/home/pt:/bin/bash" >> /etc/passwd \
+  && echo "pt:x:${id -u}:" >> /etc/group \
   && mkdir /home/pt/storage \
   && chown ${uid}:${gid} -Rv /home/pt
   
-COPY --chown=1001 PacketTracer.deb /home/pt/packettracer.deb
+COPY PacketTracer.deb /home/pt/packettracer.deb
 
-RUN export uid=1001 gid=1001 \
-  && mkdir -p pt_package/DEBIAN \
+RUN mkdir -p pt_package/DEBIAN \
   && dpkg-deb -x /home/pt/packettracer.deb /home/pt/pt_package/ \
   && dpkg-deb -e /home/pt/packettracer.deb /home/pt/pt_package/DEBIAN/ \
   && rm -f /home/pt/pt_package/DEBIAN/preinst \
