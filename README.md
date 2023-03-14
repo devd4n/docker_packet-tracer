@@ -9,11 +9,11 @@ Prerequisite is an XServer, which is provided to the container as a volume. Furt
 **1. Get the repository**
 #### https
 ```https
-git clone https://github.com/devd4n/docker_packet-tracer.git
+curl https://raw.githubusercontent.com/devd4n/docker_packet-tracer/main/install.sh
 ```
 **2. Get Helper for X11 support**
 ```https
-curl https://raw.githubusercontent.com/devd4n/docker_starter/master/install.sh | bash
+curl https://raw.githubusercontent.com/devd4n/docker_starter/main/install.sh | bash
 ```
 
 **2. Navigate to the repo**
